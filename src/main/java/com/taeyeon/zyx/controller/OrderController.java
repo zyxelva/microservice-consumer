@@ -1,9 +1,11 @@
 package com.taeyeon.zyx.controller;
 
+import com.taeyeon.zyx.dto.TbClientReportDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,6 +75,22 @@ public class OrderController {
 		logger.debug("param result : {}", result);
 
 		return result;
+	}
+
+	@RequestMapping("/user/getReportById2")
+	public ResponseEntity<TbClientReportDto> getReportById2(@RequestParam("id") Long id){
+		System.out.println("================this is two=====================");
+		String url = "http://zyxTaeyeon:8089/student/user/getReportById2/" + id;
+		ResponseEntity<TbClientReportDto> tbClientReportDto = restTemplate.getForEntity(url, TbClientReportDto.class);
+		return tbClientReportDto;
+	}
+
+	@RequestMapping("/user/getReportById")
+	public TbClientReportDto getReportById(@RequestParam("id") Long id){
+		System.out.println("================this is one=====================");
+		String url = "http://zyxTaeyeon:8089/student/user/getReportById/" + id;
+		TbClientReportDto tbClientReportDto = restTemplate.getForObject(url, TbClientReportDto.class);
+		return tbClientReportDto;
 	}
 
 }
