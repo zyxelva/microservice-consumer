@@ -17,7 +17,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.cloud.version>1.5.16.RELEASE</spring.cloud.version>
-		<skipTest></skipTest>
+		<skipTest>true</skipTest>
+		<spring.version>4.3.17.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
@@ -40,6 +41,12 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional><!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 -->
 		</dependency>
+		<!-- feign 支持-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign </artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
